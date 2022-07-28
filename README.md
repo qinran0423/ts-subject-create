@@ -14,9 +14,4 @@ npm install -g ts-subject-create
 ts-subject-create create
 ```
 
-输入type-challenges`中的题目序号即可
-
-![image-20220728205613759](/Users/mick/Library/Application Support/typora-user-images/image-20220728205613759.png)
-
-![image-20220728205641414](/Users/mick/Library/Application Support/typora-user-images/image-20220728205641414.png)
-
+会提示输入type-challenges中的题目序号，把`type-challenges`的`questions`中对应的题号输入即可
