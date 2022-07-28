@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "bin/build",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"]
+  }
+}

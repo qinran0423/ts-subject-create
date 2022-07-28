@@ -1,0 +1,26 @@
+{
+  "name": "ts-subject-create",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": "./bin/build/index.js",
+  "scripts": {
+    "dev": "tsnd ./src/index.ts create",
+    "build": "tsc",
+    "create": "node ./bin/build/index.js create"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.6.1"
+  },
+  "dependencies": {
+    "@octokit/core": "^4.0.4",
+    "axios": "^0.27.2",
+    "commander": "^9.4.0",
+    "fs-extra": "^10.1.0",
+    "inquirer": "8.2.2",
+    "kolorist": "^1.5.1"
+  }
+}
