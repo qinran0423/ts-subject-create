@@ -1,16 +1,18 @@
 import * as inquirer from "inquirer"
 import { red } from "kolorist"
 import { readdirSync } from "node:fs"
+import { getRootPath } from "."
 import { createDir } from "./createDir"
 
 
 interface obj {
-  name: string
+  name: string,
+  isDefault: boolean
 }
-export async function onCreate(args: obj = { name: "" }) {
-  let { name } = args
-
-  if (!name) {
+export async function onCreate(args: obj = { name: "", isDefault: false }) {
+  let { name,isDefault } = args
+  console.log(name, isDefault);
+  if (!(name && isDefault)) {
     const result = await inquirer.prompt([
       {
         name: "name",
@@ -21,7 +23,7 @@ export async function onCreate(args: obj = { name: "" }) {
     name = result.name
   }
 
-  const dirs = await readdirSync("./type-challenges")
+  const dirs = await readdirSync(`${getRootPath()}/type-challenges`)
   // 先看看有没有重复创建的
   const hasCreate = dirs.findIndex((item) => {
     const names = item.split("-")
@@ -38,7 +40,7 @@ export async function onCreate(args: obj = { name: "" }) {
     name = result.name
   }
 
-  createDir(name)
+  createDir(name, isDefault)
 }
 
 
