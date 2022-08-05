@@ -3,7 +3,7 @@
 
 export function createConfig(answer) {
   const inputConfig = {
-    packageName: answer.packageName
+    packageName: answer.name
   }
 
   return inputConfig

@@ -4,7 +4,7 @@ import { ensureDirSync } from "fs-extra"
 import { createTmpl } from "./createTmpl"
 import { lightBlue, red } from "kolorist"
 import { onCreate } from "./create"
-import { getRootPath } from "."
+import { getRootPath } from "./createProject"
 
 axios.defaults.baseURL = "https://api.github.com"
 

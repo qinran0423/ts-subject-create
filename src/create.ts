@@ -1,8 +1,8 @@
 import * as inquirer from "inquirer"
 import { red } from "kolorist"
 import { readdirSync } from "node:fs"
-import { getRootPath } from "."
 import { createDir } from "./createDir"
+import { getRootPath } from "./createProject"
 
 
 interface obj {

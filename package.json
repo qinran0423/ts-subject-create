@@ -6,6 +6,7 @@
   "bin": "./bin/build/index.js",
   "scripts": {
     "dev": "tsnd ./src/index.ts create",
+    "question": "tsnd ./src/index.ts question",
     "build": "tsc",
     "create": "node ./bin/build/index.js create"
   },
