@@ -73,7 +73,6 @@ function createProject(args) {
                     // await onCreate({ name: "00013", isDefault: true })
                     // 3.安装依赖
                     console.log((0, kolorist_1.blue)("\u5B89\u88C5\u4F9D\u8D56"));
-                    console.log((0, common_2.getRootPath)(config));
                     (0, execa_1["default"])("yarn", {
                         cwd: (0, common_2.getRootPath)(config),
                         stdio: [2, 2, 2]

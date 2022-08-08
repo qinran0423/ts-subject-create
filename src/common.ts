@@ -27,7 +27,7 @@ export function createConfig(answer) {
 
   return inputConfig
 }
-// TODO 创建项目和创建问题
-export function getRootPath({ packageName }) {
-  return resolve(__dirname, `../${packageName}`)
+
+export function getRootPath(args?) {
+  return resolve(process.cwd(), `${args ? args.packageName : ""}`)
 }

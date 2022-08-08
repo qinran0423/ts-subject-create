@@ -29,7 +29,6 @@ export async function createProject(args) {
   // await onCreate({ name: "00013", isDefault: true })
   // 3.安装依赖
   console.log(blue(`安装依赖`))
-  console.log(getRootPath(config))
   execa("yarn", {
     cwd: getRootPath(config),
     stdio: [2, 2, 2]

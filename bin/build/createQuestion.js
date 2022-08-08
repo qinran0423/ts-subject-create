@@ -68,7 +68,7 @@ var createDir_1 = require("./createDir");
 function onCreate(args) {
     if (args === void 0) { args = { name: "" }; }
     return __awaiter(this, void 0, void 0, function () {
-        var name, result, filearr, projectName, config, dirs, hasCreate, result;
+        var name, result, dirs, hasCreate, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -79,14 +79,9 @@ function onCreate(args) {
                     result = _a.sent();
                     name = result.name;
                     _a.label = 2;
-                case 2:
-                    filearr = process.cwd().split("/");
-                    projectName = filearr[filearr.length - 1];
-                    config = (0, common_1.createConfig)({ name: projectName });
-                    console.log((0, common_1.getRootPath)(config), config);
-                    return [4 /*yield*/, (0, node_fs_1.readdirSync)("".concat((0, common_1.getRootPath)(config), "/type-challenges"))
-                        // 先看看有没有重复创建的
-                    ];
+                case 2: return [4 /*yield*/, (0, node_fs_1.readdirSync)("".concat((0, common_1.getRootPath)(), "/type-challenges"))
+                    // 先看看有没有重复创建的
+                ];
                 case 3:
                     dirs = _a.sent();
                     hasCreate = dirs.findIndex(function (item) {
@@ -98,7 +93,7 @@ function onCreate(args) {
                             {
                                 name: "name",
                                 type: "input",
-                                message: (0, kolorist_1.red)("\u00D7\u9898\u76EE".concat(name, "\u5DF2\u7ECF\u88AB\u521B\u5EFA\uFF0C \u8BF7\u91CD\u65B0\u8F93\u5165"))
+                                message: (0, kolorist_1.red)("\u9898\u76EE".concat(name, "\u5DF2\u7ECF\u88AB\u521B\u5EFA\uFF0C \u8BF7\u91CD\u65B0\u8F93\u5165"))
                             }
                         ])];
                 case 4:
@@ -106,7 +101,7 @@ function onCreate(args) {
                     name = result.name;
                     _a.label = 5;
                 case 5:
-                    (0, createDir_1.createDir)(name, config);
+                    (0, createDir_1.createDir)(name);
                     return [2 /*return*/];
             }
         });

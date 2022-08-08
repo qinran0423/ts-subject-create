@@ -13,11 +13,7 @@ export async function onCreate(args: obj = { name: "" }) {
     const result = await setName(InputType.QUESTION)
     name = result.name
   }
-  const filearr = process.cwd().split("/")
-  const projectName = filearr[filearr.length - 1]
-  const config = createConfig({ name: projectName })
-  console.log(getRootPath(config), config)
-  const dirs = await readdirSync(`${getRootPath(config)}/type-challenges`)
+  const dirs = await readdirSync(`${getRootPath()}/type-challenges`)
   // 先看看有没有重复创建的
   const hasCreate = dirs.findIndex((item) => {
     const names = item.split("-")
@@ -28,11 +24,11 @@ export async function onCreate(args: obj = { name: "" }) {
       {
         name: "name",
         type: "input",
-        message: red(`×题目${name}已经被创建， 请重新输入`)
+        message: red(`题目${name}已经被创建， 请重新输入`)
       }
     ])
     name = result.name
   }
 
-  createDir(name, config)
+  createDir(name)
 }

@@ -1,9 +1,13 @@
 {
   "name": "ts-subject-create",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "bin": "./bin/build/index.js",
+  "files": [
+    "bin",
+    "package.json"
+  ],
   "scripts": {
     "dev": "tsnd ./src/index.ts create",
     "question": "tsnd ./src/index.ts question",
