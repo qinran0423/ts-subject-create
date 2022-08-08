@@ -1,29 +1,23 @@
 import * as inquirer from "inquirer"
 import { red } from "kolorist"
 import { readdirSync } from "node:fs"
+import { setName, InputType, createConfig, getRootPath } from "./common"
 import { createDir } from "./createDir"
-import { getRootPath } from "./createProject"
-
 
 interface obj {
-  name: string,
-  isDefault: boolean
+  name: string
 }
-export async function onCreate(args: obj = { name: "", isDefault: false }) {
-  let { name,isDefault } = args
-  console.log(name, isDefault);
-  if (!(name && isDefault)) {
-    const result = await inquirer.prompt([
-      {
-        name: "name",
-        type: "input",
-        message: "(必填) 请输入题目名称"
-      }
-    ])
+export async function onCreate(args: obj = { name: "" }) {
+  let { name } = args
+  if (!name) {
+    const result = await setName(InputType.QUESTION)
     name = result.name
   }
-
-  const dirs = await readdirSync(`${getRootPath()}/type-challenges`)
+  const filearr = process.cwd().split("/")
+  const projectName = filearr[filearr.length - 1]
+  const config = createConfig({ name: projectName })
+  console.log(getRootPath(config), config)
+  const dirs = await readdirSync(`${getRootPath(config)}/type-challenges`)
   // 先看看有没有重复创建的
   const hasCreate = dirs.findIndex((item) => {
     const names = item.split("-")
@@ -40,8 +34,5 @@ export async function onCreate(args: obj = { name: "", isDefault: false }) {
     name = result.name
   }
 
-  createDir(name, isDefault)
+  createDir(name, config)
 }
-
-
-

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { Command } from "commander"
-import { onCreate } from "./create"
+import { onCreate } from "./createQuestion"
 import { createProject } from "./createProject"
+
 
 // 创建命令对象
 const program = new Command()

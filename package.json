@@ -8,7 +8,8 @@
     "dev": "tsnd ./src/index.ts create",
     "question": "tsnd ./src/index.ts question",
     "build": "tsc",
-    "create": "node ./bin/build/index.js create"
+    "init": "node ./bin/build/index.js create",
+    "setup": "node ./bin/build/index.js question"
   },
   "keywords": [],
   "author": "",

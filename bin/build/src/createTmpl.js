@@ -39,56 +39,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.createDir = void 0;
+exports.createTmpl = void 0;
 var axios_1 = __importDefault(require("axios"));
 var path_1 = require("path");
 var fs_extra_1 = require("fs-extra");
-var createTmpl_1 = require("./createTmpl");
-var kolorist_1 = require("kolorist");
-var createQuestion_1 = require("./createQuestion");
-var common_1 = require("./common");
 axios_1["default"].defaults.baseURL = "https://api.github.com";
-function createDir(name, config) {
+var WRITE_FILE_OPTIONS = { encoding: "utf-8" };
+function createTmpl(tmplDir, name, file) {
     return __awaiter(this, void 0, void 0, function () {
-        var res, filearr, isFindFileContent, tmplDir, error_1;
+        var res, tmplFilePath, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios_1["default"].get("/repos/type-challenges/type-challenges/contents/questions")];
+                    return [4 /*yield*/, (0, axios_1["default"])({
+                            url: "/repos/type-challenges/type-challenges/contents/questions/".concat(name, "/").concat(file, ".ts"),
+                            method: "get",
+                            headers: {
+                                accept: "application/vnd.github.v3.raw"
+                            }
+                        })];
                 case 1:
                     res = _a.sent();
-                    if (res.data) {
-                        filearr = res.data;
-                        isFindFileContent = filearr.find(function (item) {
-                            var names = item.name.split("-");
-                            return names[0] === name;
-                        });
-                        // 如果isFindFileContent,那就去创建文件夹 和内容
-                        if (isFindFileContent) {
-                            name = isFindFileContent.name;
-                            tmplDir = (0, path_1.resolve)("".concat((0, common_1.getRootPath)(config), "/type-challenges"), name);
-                            (0, fs_extra_1.ensureDirSync)(tmplDir);
-                            (0, createTmpl_1.createTmpl)(tmplDir, name, "template");
-                            (0, createTmpl_1.createTmpl)(tmplDir, name, "test-cases");
-                            console.log((0, kolorist_1.lightBlue)("\n            \u2714\uFE0F \u9898\u76EE".concat(name, "\u521B\u5EFA\u6210\u529F\n          ")));
-                        }
-                        else {
-                            // 不存在则可能没找到  重新创建
-                            aFreshCreate(name);
-                        }
-                    }
+                    tmplFilePath = (0, path_1.resolve)(tmplDir, "".concat(file, ".ts"));
+                    (0, fs_extra_1.writeFileSync)(tmplFilePath, res.data, WRITE_FILE_OPTIONS);
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
+                    console.log(error_1);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.createDir = createDir;
-function aFreshCreate(name) {
-    console.log((0, kolorist_1.red)("\u9898\u76EE".concat(name, "\u53EF\u80FD\u6CA1\u6709\u627E\u5230")));
-    return (0, createQuestion_1.onCreate)();
-}
+exports.createTmpl = createTmpl;
