@@ -47,7 +47,6 @@ function createConfig(answer) {
 }
 exports.createConfig = createConfig;
 function getRootPath(args) {
-    console.log(process.cwd());
     return (0, path_1.resolve)(process.cwd(), "".concat(args ? args.packageName : ""));
 }
 exports.getRootPath = getRootPath;
