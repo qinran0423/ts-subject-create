@@ -18,3 +18,6 @@ ts-subject-create init
 ts-subject-create setup
 ```
 会提示输入type-challenges中的题目序号，把`type-challenges`的`questions`中对应的题号输入即可
+
+
+觉得用的可以的话，麻烦留个star哦！！！
